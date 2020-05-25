@@ -39,4 +39,4 @@ load_csv = gcs_to_bq.GoogleCloudStorageToBigQueryOperator(
 #        bash_command='bq rm -rf airflow_test',
 #        dag=dag)
 
-create_airflow_test_dataset >> load_csv
+create_test_dataset >> load_csv
