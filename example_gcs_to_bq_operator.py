@@ -1,19 +1,26 @@
 import airflow
-try:
-    from airflow.contrib.operators import gcs_to_bq
-except ImportError:
-    gcs_to_bq = None
+#try:
+#    from airflow.contrib.operators import gcs_to_bq
+#except ImportError:
+#    gcs_to_bq = None
 from airflow import models
 from airflow.operators import bash_operator
 
 
-if gcs_to_bq is not None:
-    args = {
-        'owner': 'airflow',
-        'start_date': airflow.utils.dates.days_ago(2)
+#if gcs_to_bq is not None:
+#    args = {
+#        'owner': 'airflow',
+#        'start_date': airflow.utils.dates.days_ago(2)
+#    }
+
+
+default_dag_args = {
+    'owner': 'airflow',
+    'depends_on_past': False, 
+    'start_date': airflow.utils.dates.days_ago(0),
     }
 
-dag = models.DAG(dag_id='example_gcs_to_bq_operator', default_args=args,schedule_interval=None)
+dag = models.DAG(dag_id='example_gcs_to_bq_operator', default_args=default_dag_args,schedule_interval=None)
 
 create_test_dataset = bash_operator.BashOperator(
     task_id='create_airflow_test_dataset',
