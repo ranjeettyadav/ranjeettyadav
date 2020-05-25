@@ -15,10 +15,10 @@ from airflow.operators import bash_operator
 
 dag = models.DAG(dag_id='example_gcs_to_bq_operator', default_args=args,schedule_interval=None)
 
-#    create_test_dataset = bash_operator.BashOperator(
-#        task_id='create_airflow_test_dataset',
-#        bash_command='bq mk airflow_test',
-#        dag=dag)
+create_test_dataset = bash_operator.BashOperator(
+    task_id='create_airflow_test_dataset',
+    bash_command='bq mk airflow_test',
+    dag=dag)
 
     # [START howto_operator_gcs_to_bq]
 load_csv = gcs_to_bq.GoogleCloudStorageToBigQueryOperator(
@@ -39,4 +39,4 @@ load_csv = gcs_to_bq.GoogleCloudStorageToBigQueryOperator(
 #        bash_command='bq rm -rf airflow_test',
 #        dag=dag)
 
-    load_csv
+create_airflow_test_dataset >> load_csv
