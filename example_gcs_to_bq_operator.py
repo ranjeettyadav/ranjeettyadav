@@ -1,17 +1,17 @@
 import airflow
-#try:
-#    from airflow.contrib.operators import gcs_to_bq
-#except ImportError:
-#    gcs_to_bq = None
+try:
+    from airflow.contrib.operators import gcs_to_bq
+except ImportError:
+    gcs_to_bq = None
 from airflow import models
 from airflow.operators import bash_operator
 
 
-#if gcs_to_bq is not None:
-#    args = {
-#        'owner': 'airflow',
-#        'start_date': airflow.utils.dates.days_ago(2)
-#    }
+if gcs_to_bq is not None:
+    args = {
+        'owner': 'airflow',
+        'start_date': airflow.utils.dates.days_ago(2)
+    }
 
 
 default_dag_args = {
