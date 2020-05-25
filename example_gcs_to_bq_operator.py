@@ -7,11 +7,11 @@ from airflow import models
 from airflow.operators import bash_operator
 
 
-#if gcs_to_bq is not None:
-#    args = {
-#        'owner': 'airflow',
-#        'start_date': airflow.utils.dates.days_ago(2)
-#    }
+if gcs_to_bq is not None:
+    args = {
+        'owner': 'airflow',
+        'start_date': airflow.utils.dates.days_ago(2)
+    }
 
 dag = models.DAG(dag_id='example_gcs_to_bq_operator', default_args=args,schedule_interval=None)
 
