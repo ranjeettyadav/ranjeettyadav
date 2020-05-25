@@ -1,8 +1,8 @@
 import airflow
-#try:
-#    from airflow.contrib.operators import gcs_to_bq
-#except ImportError:
-#    gcs_to_bq = None
+try:
+    from airflow.contrib.operators import gcs_to_bq
+except ImportError:
+    gcs_to_bq = None
 from airflow import models
 from airflow.operators import bash_operator
 
