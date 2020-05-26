@@ -16,8 +16,9 @@ dag = DAG(
 
 run_this = BashOperator(
     task_id='run_this',
-    bash_command='bq query --use_legacy_sql=false "SELECT count(*) FROM `dmgcp-ingestion-poc.transient.cvn_stress_8gb`"',
-    dag=dag,
+    use_legacy_sql=False,
+    bash_command="bq query 'SELECT count(*) FROM `dmgcp-ingestion-poc.transient.cvn_stress_8gb`'",
+    dag=dag
 )
 run_this
 
