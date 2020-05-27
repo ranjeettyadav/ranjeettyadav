@@ -1,6 +1,10 @@
-import airflow
-from airflow.models import DAG
+from datetime import datetime, timedelta
+from airflow import DAG
+from airflow import models
 from airflow.operators.bash_operator import BashOperator
+from airflow.contrib.operators.bigquery_operator import BigQueryOperator
+import importlib
+import airflow
 
 acp = importlib.import_module("ranjeettyadav.airflow_config_property")
 bq_connection_id = acp.bq_connection_id
