@@ -6,7 +6,7 @@ from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 import importlib
 import airflow
 
-acp = importlib.import_module("ranjeettyadav.airflow_config_property")
+acp = importlib.import_module("ranjeettyadav.ranjeettyadav.airflow_config_property")
 bq_connection_id = acp.bq_connection_id
 
 default_dag_args = {
