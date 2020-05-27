@@ -26,7 +26,7 @@ dag = DAG(
     dag_id='test2',
     default_args=default_dag_args,
     schedule_interval='0 0 * * *',
-
+)
 
 def run_query(query):
   client = bigquery.Client()
