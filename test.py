@@ -6,8 +6,12 @@ from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 import importlib
 import airflow
 
-acp = importlib.import_module("ranjeettyadav.ranjeettyadav.airflow_config_property")
-bq_connection_id = acp.bq_connection_id
+project_dm = 'dmgcp-ingestion-poc'
+location = 'US'
+bq_connection_id= 'my_gcp_connection'
+
+#acp = importlib.import_module("ranjeettyadav.ranjeettyadav.airflow_config_property")
+#bq_connection_id = acp.bq_connection_id
 
 default_dag_args = {
     'owner': 'airflow',
@@ -15,7 +19,7 @@ default_dag_args = {
     'start_date': airflow.utils.dates.days_ago(0),
     'retries': 1,
     'retry_delay': timedelta(minutes=1),
-    'project_id': acp.project_dm
+    'project_id': project_dm
 }
 
 dag = DAG(
