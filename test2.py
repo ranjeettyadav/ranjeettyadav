@@ -43,5 +43,3 @@ if __name__ == '__main__':
    
     results=run_query(query)
     print(results)
-    
-test2
