@@ -13,7 +13,6 @@ dag = DAG(
     schedule_interval='0 0 * * *',
 )
 
-
 run_this = BashOperator(
     task_id='run_this',
    # use_legacy_sql=False,
