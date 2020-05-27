@@ -42,3 +42,6 @@ if __name__ == '__main__':
     query = """SELECT count(*) FROM `dmgcp-ingestion-poc.transient.cvn_stress_8gb` """ 
    
     results=run_query(query)
+    print(results)
+    
+ test2 >> test2
