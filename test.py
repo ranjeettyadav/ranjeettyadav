@@ -11,12 +11,12 @@ default_dag_args = {
     'start_date': airflow.utils.dates.days_ago(0),
     'retries': 1,
     'retry_delay': timedelta(minutes=1),
-	'project_id': acp.project_dm
+    'project_id': acp.project_dm
 }
 
 dag = DAG(
     dag_id='test',
-    default_args=args,
+    default_args=default_dag_args,
     schedule_interval='0 0 * * *',
 )
 
