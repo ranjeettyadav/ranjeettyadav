@@ -2,9 +2,16 @@ import airflow
 from airflow.models import DAG
 from airflow.operators.bash_operator import BashOperator
 
-args = {
+acp = importlib.import_module("ranjeettyadav.airflow_config_property")
+bq_connection_id = acp.bq_connection_id
+
+default_dag_args = {
     'owner': 'airflow',
-    'start_date': airflow.utils.dates.days_ago(2),
+    'depends_on_past': False, 
+    'start_date': airflow.utils.dates.days_ago(0),
+    'retries': 1,
+    'retry_delay': timedelta(minutes=1),
+	'project_id': acp.project_dm
 }
 
 dag = DAG(
@@ -18,7 +25,7 @@ run_this = BashOperator(
    # use_legacy_sql=False,
     bash_command="bq query --nouse_legacy_sql 'SELECT count(*) FROM `dmgcp-ingestion-poc`.transient.cvn_stress_8gb' ",
     dag=dag,
-    bigquery_conn_id=my_gcp_connection
+    bigquery_conn_id=bq_connection_id
 )
 run_this
 
