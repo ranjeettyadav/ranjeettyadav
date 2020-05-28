@@ -28,12 +28,25 @@ dag = DAG(
     schedule_interval='0 0 * * *',
 )
 
-run_this = BashOperator(
-    task_id='run_this',
-    #use_legacy_sql=False,
-    bash_command='bq query --nouse_legacy_sql "SELECT count(*) FROM `dmgcp-ingestion-poc`.transient.cvn_stress_8gb" ',
-    dag=dag,
-    bigquery_conn_id=bq_connection_id
-)
-run_this
+#run_this = BashOperator(
+#    task_id='run_this',
+#    #use_legacy_sql=False,
+#    bash_command='bq query --nouse_legacy_sql "SELECT count(*) FROM `dmgcp-ingestion-poc`.transient.cvn_stress_8gb" ',
+#    dag=dag,
+#    bigquery_conn_id=bq_connection_id
+#)
+
+
+BQ_Trans_alloc = BigQueryOperator(
+        task_id='bq_trans_alloc',
+        sql='SELECT count(*) FROM `dmgcp-ingestion-poc.transient.cvn_stress_8gb`',
+        bigquery_conn_id=bq_connection_id,
+        use_legacy_sql=False,
+        dag=dag
+        )
+
+BQ_Trans_alloc
+
+
+#run_this
 
