@@ -10,9 +10,6 @@ project_dm = 'dmgcp-ingestion-poc'
 location = 'US'
 bq_connection_id= 'bigquery_default'
 
-#acp = importlib.import_module("ranjeettyadav.ranjeettyadav.airflow_config_property")
-#bq_connection_id = acp.bq_connection_id
-
 default_dag_args = {
     'owner': 'airflow',
     'depends_on_past': False, 
@@ -28,16 +25,8 @@ dag = DAG(
     schedule_interval='0 0 * * *',
 )
 
-#run_this = BashOperator(
-#    task_id='run_this',
-#    #use_legacy_sql=False,
-#    bash_command='bq query --nouse_legacy_sql "SELECT count(*) FROM `dmgcp-ingestion-poc`.transient.cvn_stress_8gb" ',
-#    dag=dag,
-#    bigquery_conn_id=bq_connection_id
-#)
 
-
-BQ_Trans_alloc = BigQueryOperator(
+create_test_dag = BigQueryOperator(
         task_id='bq_trans_alloc',
         sql='ddl/test_dag.sql',
         bigquery_conn_id=bq_connection_id,
@@ -45,8 +34,7 @@ BQ_Trans_alloc = BigQueryOperator(
         dag=dag
         )
 
-BQ_Trans_alloc
+create_test_dag
 
 
-#run_this
 
