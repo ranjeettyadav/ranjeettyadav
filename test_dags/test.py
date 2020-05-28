@@ -8,7 +8,7 @@ import airflow
 
 project_dm = 'dmgcp-ingestion-poc'
 location = 'US'
-bq_connection_id= 'my_gcp_connection'
+bq_connection_id= 'bigquery_default'
 
 #acp = importlib.import_module("ranjeettyadav.ranjeettyadav.airflow_config_property")
 #bq_connection_id = acp.bq_connection_id
@@ -30,7 +30,7 @@ dag = DAG(
 
 run_this = BashOperator(
     task_id='run_this',
-   # use_legacy_sql=False,
+    #use_legacy_sql=False,
     bash_command='bq query --nouse_legacy_sql "SELECT count(*) FROM `dmgcp-ingestion-poc`.transient.cvn_stress_8gb" ',
     dag=dag,
     bigquery_conn_id=bq_connection_id
