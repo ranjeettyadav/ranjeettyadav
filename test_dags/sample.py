@@ -27,7 +27,7 @@ dag = DAG(
 
 create_sample = BigQueryOperator(
     task_id='create_sample',
-    sql='sample.sql',
+    sql='ddl/sample.sql',
     bigquery_conn_id=bq_connection_id,
     use_legacy_sql=False,
     dag=dag
