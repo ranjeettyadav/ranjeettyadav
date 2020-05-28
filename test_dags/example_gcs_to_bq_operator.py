@@ -41,8 +41,8 @@ load_csv = gcs_to_bq.GoogleCloudStorageToBigQueryOperator(
     ],
     write_disposition='WRITE_TRUNCATE',
     dag=dag,
-    bigquery_conn_id='bq_connection_id',           
-    google_cloud_storage_conn_id='bq_connection_id')
+    bigquery_conn_id=bq_connection_id,           
+    google_cloud_storage_conn_id=bq_connection_id)
     # [END howto_operator_gcs_to_bq]
 
 #    delete_test_dataset = bash_operator.BashOperator(
