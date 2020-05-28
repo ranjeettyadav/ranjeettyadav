@@ -8,8 +8,7 @@ import airflow
 
 project_dm = 'dmgcp-ingestion-poc'
 location = 'US'
-bq_connection_id= 'my_gcp_connection'
-
+bq_connection_id= 'bigquery_default'
 
 default_dag_args = {
     'owner': 'airflow',
