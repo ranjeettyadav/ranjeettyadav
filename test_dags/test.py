@@ -8,7 +8,10 @@ import airflow
 
 project_dm = 'dmgcp-ingestion-poc'
 location = 'US'
-bq_connection_id= 'bigquery_default'
+bq_connection_id= 'my_gcp_connection'
+
+#acp = importlib.import_module("ranjeettyadav.ranjeettyadav.airflow_config_property")
+#bq_connection_id = acp.bq_connection_id
 
 default_dag_args = {
     'owner': 'airflow',
@@ -20,11 +23,10 @@ default_dag_args = {
 }
 
 dag = DAG(
-    dag_id='test',
+    dag_id='test_2',
     default_args=default_dag_args,
     schedule_interval='0 0 * * *',
 )
-
 
 create_test_dag = BigQueryOperator(
         task_id='bq_trans_alloc',
@@ -35,6 +37,3 @@ create_test_dag = BigQueryOperator(
         )
 
 create_test_dag
-
-
-
