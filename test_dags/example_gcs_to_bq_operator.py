@@ -1,18 +1,17 @@
 from airflow.models import Connection
 from airflow.settings import Session
+import airflow
+from airflow import models
 
 project_dm = 'dmgcp-ingestion-poc'
 location = 'US'
 bq_connection_id= 'bigquery_default'
 
-import airflow
+
 try:
     from airflow.contrib.operators import gcs_to_bq
 except ImportError:
     gcs_to_bq = None
-from airflow import models
-from airflow.operators import bash_operator
-
 
 if gcs_to_bq is not None:
     args = {
@@ -28,7 +27,6 @@ default_dag_args = {
     }
 
 dag = models.DAG(dag_id='example_gcs_to_bq_operator', default_args=default_dag_args,schedule_interval=None)
-
 
 load_csv = gcs_to_bq.GoogleCloudStorageToBigQueryOperator(
     task_id='gcs_to_bq_example',
