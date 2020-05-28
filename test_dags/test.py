@@ -39,7 +39,7 @@ dag = DAG(
 
 BQ_Trans_alloc = BigQueryOperator(
         task_id='bq_trans_alloc',
-        sql='SELECT count(*) FROM `dmgcp-ingestion-poc.transient.cvn_stress_8gb`',
+        sql='bigquery/alloc.sql',
         bigquery_conn_id=bq_connection_id,
         use_legacy_sql=False,
         dag=dag
