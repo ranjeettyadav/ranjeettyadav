@@ -4,6 +4,10 @@ from datetime import datetime, timedelta
 from airflow.contrib.operators.dataflow_operator import DataFlowJavaOperator
 import uuid
 
+project_dm = 'dmgcp-ingestion-poc'
+location = 'US'
+bq_connection_id= 'bigquery_default'
+
 # create a dictionary of default typical args to pass to the dag
 default_args = {
     'depends_on_past': False,
@@ -45,6 +49,8 @@ run_entl_stat_hist = DataFlowJavaOperator(
 		'workerMachineType' : "n1-standard-4",
 		'serviceAccount' : "dm-ingestion@dmgcp-ingestion-poc.iam.gserviceaccount.com",
         'subnetwork':"https://www.googleapis.com/compute/v1/projects/dm-network-host-project/regions/us-central1/subnetworks/us-central1-network-foundation" 
-	})
+	}
+    bq_connection_id= 'bigquery_default'
+    )
     
 run_entl_stat_hist
