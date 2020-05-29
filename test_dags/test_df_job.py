@@ -26,6 +26,7 @@ dag = DAG('test_df_job', # give the dag a name
 run_entl_stat_hist = DataFlowJavaOperator(
 	dag=dag,
 	task_id='test_df_job',
+    bigquery_conn_id=bq_connection_id,
 	jar="gs://ebcidc-to-bq-testing-us-central/ebcdic/jar/ebcidctobq-1.0.jar",
 	options={
 		'binaryFile':"gs://ebcidc-to-bq-testing-us-central/ebcdic/ecdic_files/WRT/wrt_csv_out_eb", 
@@ -49,8 +50,6 @@ run_entl_stat_hist = DataFlowJavaOperator(
 		'workerMachineType' : "n1-standard-4",
 		'serviceAccount' : "dm-ingestion@dmgcp-ingestion-poc.iam.gserviceaccount.com",
         'subnetwork':"https://www.googleapis.com/compute/v1/projects/dm-network-host-project/regions/us-central1/subnetworks/us-central1-network-foundation" 
-	}
-    bq_connection_id= 'bigquery_default'
-    )
+	})
     
 run_entl_stat_hist
