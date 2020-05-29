@@ -45,8 +45,8 @@ run_entl_stat_hist = DataFlowJavaOperator(
 		'project': "dmgcp-ingestion-poc",
 		'tempLocation': "gs://ebcidc-to-bq-testing-us-central/ebcdic/temp/",
 		'region' : "us-central1",
-		'numWorkers' : 2,
-		'maxNumWorkers' : 20,
+		'numWorkers' : "2",
+		'maxNumWorkers' : "20",
 		'workerMachineType' : "n1-standard-4",
 		'serviceAccount' : "dm-ingestion@dmgcp-ingestion-poc.iam.gserviceaccount.com",
         'subnetwork':"https://www.googleapis.com/compute/v1/projects/dm-network-host-project/regions/us-central1/subnetworks/us-central1-network-foundation" 
