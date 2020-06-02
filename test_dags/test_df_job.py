@@ -32,7 +32,7 @@ run_entl_stat_hist = DataFlowJavaOperator(
 		'binaryFile':"gs://ebcidc-to-bq-testing-us-central/ebcdic/ecdic_files/WRT/wrt_csv_out_eb", 
         'copyBook':"gs://ebcidc-to-bq-testing-us-central/ebcdic/copybooks/diff_cop_book/WRT.cob",
         'parserClass':"com.dm.parser.ebcdic.FixedWidthFileParser",
-        'JSONPath':"gs://ebcidc-to-bq-testing-us-central/ebcdic/json/bq_schema/wrt*.json",
+        'outSchemaJsonPath':"gs://ebcidc-to-bq-testing-us-central/ebcdic/json/bq_schema/wrt*.json",
         'dqCheckJson':"gs://ebcidc-to-bq-testing-us-central/ebcdic/json/dq/wrt_dq_config.json",
         'dataTransformationJson':"gs://ebcidc-to-bq-testing-us-central/ebcdic/json/datatrans/wrt_transform.json",
         'outputTable':"dmgcp-ingestion-poc:transient.wrt_stress_4gb_n14",
