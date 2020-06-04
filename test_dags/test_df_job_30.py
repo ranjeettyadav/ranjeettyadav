@@ -14,12 +14,13 @@ default_args = {
     'start_date': airflow.utils.dates.days_ago(0),
     'retries': 0,
     'retry_delay': timedelta(minutes=2),
+
 }
 
 # define the dag
 dag = DAG('test_df_job_30', # give the dag a name
 		   description = 'Test_Job',
-           schedule_interval='*/5 * * * *',
+           schedule_interval=none,
            default_args=default_args
          )
 
