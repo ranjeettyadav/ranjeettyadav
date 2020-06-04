@@ -18,8 +18,7 @@
 
 """Example DAG demonstrating the usage of the BashOperator."""
 
-from datetime import timedelta
-
+from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
@@ -33,7 +32,7 @@ args = {
 dag = DAG(
     dag_id='example_bash_operator',
     default_args=args,
-    schedule_interval='11 40 * * *',
+    schedule_interval='11 42 * * *',
     dagrun_timeout=timedelta(minutes=60),
     tags=['example']
 )
