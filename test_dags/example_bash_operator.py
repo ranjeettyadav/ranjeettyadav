@@ -8,13 +8,14 @@ from airflow.operators.dummy_operator import DummyOperator
 
 args = {
     'owner': 'airflow',
-    'start_date': airflow.utils.dates.days_ago(2),
+#    'start_date': airflow.utils.dates.days_ago(5),
+    'start_date': datetime.datetime(2016, 11, 01)
 }
 
 dag = DAG(
     dag_id='example_bash_operator',
     default_args=args,
-    schedule_interval="07 43 * * *",
+    schedule_interval="07 58 * * *",
     dagrun_timeout=timedelta(minutes=60),
 )
 
