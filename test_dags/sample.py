@@ -22,7 +22,7 @@ default_dag_args = {
 dag = DAG(
     dag_id='sample',
     default_args=default_dag_args,
-    schedule_interval="00 7 * * *",
+    schedule_interval='1 * * * *',
 )
 
 create_sample = BigQueryOperator(
@@ -30,6 +30,8 @@ create_sample = BigQueryOperator(
     sql='ddl/sample.sql',
     bigquery_conn_id=bq_connection_id,
     use_legacy_sql=False,
+        write_disposition='WRITE_TRUNCATE',
+
     dag=dag
     )
 
