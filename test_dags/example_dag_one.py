@@ -14,7 +14,7 @@ default_args = {
 }
 
 dag = DAG('example_dag_one',
-            schedule_interval='@hourly',
+            schedule_interval='*/5 * * * *',
             catchup=False,
             default_args=default_args)
 
