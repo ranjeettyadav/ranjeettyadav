@@ -26,7 +26,7 @@ default_dag_args = {
     'start_date': airflow.utils.dates.days_ago(0),
     }
 
-dag = models.DAG(dag_id='example_gcs_to_bq_operator', default_args=default_dag_args,schedule_interval=None)
+dag = models.DAG(dag_id='example_gcs_to_bq_operator', default_args=default_dag_args,schedule_interval="00 7 * * *")
 
 load_csv = gcs_to_bq.GoogleCloudStorageToBigQueryOperator(
     task_id='gcs_to_bq_example',

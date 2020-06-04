@@ -22,7 +22,7 @@ default_dag_args = {
 dag = DAG(
     dag_id='sample',
     default_args=default_dag_args,
-    schedule_interval='0 0 * * *',
+    schedule_interval="00 7 * * *",
 )
 
 create_sample = BigQueryOperator(
