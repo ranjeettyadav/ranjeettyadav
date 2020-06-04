@@ -9,7 +9,7 @@ from airflow.operators.dummy_operator import DummyOperator
 args = {
     'owner': 'airflow',
 #    'start_date': airflow.utils.dates.days_ago(5),
-    'start_date': datetime.datetime(2016, 11, 01)
+    'start_date': datetime.datetime(2016, 11, 01),
 }
 
 dag = DAG(
