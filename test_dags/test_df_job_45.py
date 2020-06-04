@@ -19,7 +19,7 @@ default_args = {
 # define the dag
 dag = DAG('test_df_job_45', # give the dag a name
 		   description = 'Test_Job',
-           schedule_interval='*/5 * * * *',
+           schedule_interval=none,
            default_args=default_args
          )
 
