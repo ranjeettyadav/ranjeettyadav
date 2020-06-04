@@ -14,7 +14,7 @@ args = {
 dag = DAG(
     dag_id='example_bash_operator',
     default_args=args,
-    schedule_interval="00 7 * * *",
+    schedule_interval="07 43 * * *",
     dagrun_timeout=timedelta(minutes=60),
 )
 
