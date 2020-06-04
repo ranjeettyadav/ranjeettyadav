@@ -25,6 +25,7 @@ from airflow.example_dags.subdags.subdag import subdag
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.subdag_operator import SubDagOperator
 from airflow.utils.dates import days_ago
+import airflow
 
 DAG_NAME = 'example_subdag_operator'
 
