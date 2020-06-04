@@ -20,17 +20,17 @@ dag = DAG('example_dag_one',
 
 t1 = BashOperator(
     task_id='print_date1',
-    bash_command='sleep 2m',
+    bash_command='sleep 1m',
     dag=dag)
 
 t2 = BashOperator(
     task_id='print_date2',
-    bash_command='sleep 2m',
+    bash_command='sleep 1m',
     dag=dag)
 
 t3 = BashOperator(
     task_id='print_date3',
-    bash_command='sleep 2m',
+    bash_command='sleep 1m',
     dag=dag)
 
 t2.set_upstream(t1)
