@@ -26,13 +26,13 @@ from airflow.utils.dates import days_ago
 
 args = {
     'owner': 'airflow',
-    'start_date': datetime.datetime(year=2020,month=06,day=04,hour=11,minute=0),
+    'start_date': datetime(2020,06,04),
 }
 
 dag = DAG(
     dag_id='example_bash_operator',
     default_args=args,
-    schedule_interval='11 42 * * *',
+    schedule_interval=timedelta(seconds=5),
     dagrun_timeout=timedelta(minutes=60),
     tags=['example']
 )
