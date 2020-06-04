@@ -29,13 +29,14 @@ import airflow
 args = {
     'owner': 'airflow',
     'start_date': airflow.utils.dates.days_ago(0),
+    'schedule_interval': '@daily',
 }
 
 dag = DAG(
     dag_id='example_bash_operator',
     default_args=args,
     #schedule_interval='*/1 * * * *',
-    schedule_interval=@daily,
+    #schedule_interval=@daily,
     dagrun_timeout=timedelta(minutes=60),
     tags=['example']
 )
