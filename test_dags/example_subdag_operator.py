@@ -36,8 +36,8 @@ args = {
 dag = DAG(
     dag_id=DAG_NAME,
     default_args=args,
-    schedule_interval='*/1 * * * *',
-    dagrun_timeout=timedelta(seconds=20),
+    schedule_interval='1 * * * *',
+    dagrun_timeout=timedelta(minutes=5),
     tags=['example']
 )
 
