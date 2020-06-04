@@ -8,20 +8,15 @@ from airflow.operators.dummy_operator import DummyOperator
 
 args = {
     'owner': 'airflow',
-#    'start_date': airflow.utils.dates.days_ago(5),
-    'start_date': datetime.datetime(2016, 11, 01),
+    'start_date': days_ago(2),
 }
 
 dag = DAG(
     dag_id='example_bash_operator',
     default_args=args,
-    schedule_interval="08 08 * * *",
+    schedule_interval='0 0 * * *',
     dagrun_timeout=timedelta(minutes=60),
-)
-
-run_this_last = DummyOperator(
-    task_id='run_this_last',
-    dag=dag,
+    tags=['example']
 )
 
 # [START howto_operator_bash]
