@@ -20,6 +20,7 @@
 
 # [START example_subdag_operator]
 from airflow import DAG
+from datetime import datetime, timedelta
 from airflow.example_dags.subdags.subdag import subdag
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.subdag_operator import SubDagOperator
@@ -29,13 +30,14 @@ DAG_NAME = 'example_subdag_operator'
 
 args = {
     'owner': 'airflow',
-    'start_date': days_ago(2),
+    'start_date': datetime.now(),
 }
 
 dag = DAG(
     dag_id=DAG_NAME,
     default_args=args,
-    schedule_interval="00 7 * * *",
+    schedule_interval='*/1 * * * *',
+    dagrun_timeout=timedelta(seconds=20),
     tags=['example']
 )
 
