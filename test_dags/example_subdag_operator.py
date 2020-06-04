@@ -30,7 +30,7 @@ DAG_NAME = 'example_subdag_operator'
 
 args = {
     'owner': 'airflow',
-    'start_date': datetime.now(),
+    'start_date': airflow.utils.dates.days_ago(0),
 }
 
 dag = DAG(
