@@ -32,7 +32,7 @@ default_dag_args = {
 }
 
 dag = DAG(
-    dag_id='test_wrt_1',
+    dag_id='test_wrt_2',
     default_args=default_dag_args
     
 )
@@ -41,7 +41,7 @@ load_csv = gcs_to_bq.GoogleCloudStorageToBigQueryOperator(
     task_id='gcs_to_bq_example',
     bucket='ebcidc-to-bq-testing-us-central',
     source_objects=['csv/wrt/wrt_output.csv'],
-    destination_project_dataset_table='airflow_test.wrt_1',
+    destination_project_dataset_table='airflow_test.wrt_2',
     schema_objects='gs://kubernetes-staging-85897c950b/Dags/json/wrt-00000-of-00001.json',
     write_disposition='WRITE_TRUNCATE',
     dag=dag,
