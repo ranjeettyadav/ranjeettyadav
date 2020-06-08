@@ -6,6 +6,17 @@ from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 import importlib
 import airflow
 
+try:
+    from airflow.contrib.operators import gcs_to_bq
+except ImportError:
+    gcs_to_bq = None
+
+if gcs_to_bq is not None:
+    args = {
+        'owner': 'airflow',
+        'start_date': airflow.utils.dates.days_ago(2)
+    }
+
 project_dm = 'dmgcp-ingestion-poc'
 location = 'US'
 bq_connection_id= 'bigquery_default'
