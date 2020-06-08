@@ -17,7 +17,7 @@ default_dag_args = {
     'retries': 1,
     'retry_delay': timedelta(minutes=1),
     'project_id': project_dm,
-    schedule_interval=None
+    'schedule_interval'=None
 }
 
 dag = DAG(
