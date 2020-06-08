@@ -17,12 +17,12 @@ default_dag_args = {
     'retries': 1,
     'retry_delay': timedelta(minutes=1),
     'project_id': project_dm,
-    schedule_interval='@none',
+    schedule_interval=None
 }
 
 dag = DAG(
     dag_id='test_wrt',
-    default_args=default_dag_args,
+    default_args=default_dag_args
     
 )
 
