@@ -16,13 +16,14 @@ default_dag_args = {
     'start_date': airflow.utils.dates.days_ago(0),
     'retries': 1,
     'retry_delay': timedelta(minutes=1),
-    'project_id': project_dm
+    'project_id': project_dm,
+    schedule_interval='@none',
 }
 
 dag = DAG(
     dag_id='test_wrt',
     default_args=default_dag_args,
-    schedule_interval=none,
+    
 )
 
 load_csv = gcs_to_bq.GoogleCloudStorageToBigQueryOperator(
